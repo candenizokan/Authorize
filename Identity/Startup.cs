@@ -71,7 +71,9 @@ namespace Identity
 
             app.UseRouting();
 
-            app.UseAuthorization();
+            app.UseAuthentication();//kimlik doğrulama/ tanıtma. önce kimliğini doğrula
+
+            app.UseAuthorization();//yetkilendirme. sonra yetkin dahilince bi bakarız 
 
             app.UseEndpoints(endpoints =>
             {
