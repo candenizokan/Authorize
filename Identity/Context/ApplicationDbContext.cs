@@ -1,6 +1,8 @@
-﻿namespace Identity.Context
+﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+
+namespace Identity.Context
 {
-    public class ApplicationDbContext
+    public class ApplicationDbContext : IdentityDbContext
     {
     }
 }
