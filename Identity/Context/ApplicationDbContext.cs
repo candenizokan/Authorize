@@ -1,8 +1,9 @@
-﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+﻿using Identity.Models;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 
 namespace Identity.Context
 {
-    public class ApplicationDbContext : IdentityDbContext
+    public class ApplicationDbContext : IdentityDbContext<AppUser>
     {
     }
 }
