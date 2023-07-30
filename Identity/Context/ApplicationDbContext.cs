@@ -8,7 +8,7 @@ namespace Identity.Context
     {
         //bu sınıf context sınıfımdır. ctorda apsettinsden connectionstring lazım
 
-        public ApplicationDbContext(DbContextOptions)
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options):base(options)
         {
 
         }
