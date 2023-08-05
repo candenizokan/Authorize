@@ -1,1 +1,32 @@
 ﻿@model RegisterDTO
+
+
+
+
+<div class="row">
+    <div class="card col-md-8 offset-2">
+        <div class="card-body">
+            <div class="card-text"> KAYIT PANELİ</div>
+            <form asp-action="Register" method="post">
+                <div class="form-group">
+                    <label asp-for="UserName" class="form-control"></label>
+                    <input asp-for="UserName" class="form-control" type="text" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Mail" class="form-control"></label>
+                    <input asp-for="Mail" class="form-control" type="text" />
+                    <span asp-validation-for="Mail" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="form-control"></label>
+                    <input asp-for="Password" class="form-control" type="text" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                   <input type="submit" class="btn btn-success" value="KAYIT" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
