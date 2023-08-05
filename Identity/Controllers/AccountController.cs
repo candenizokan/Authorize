@@ -12,9 +12,12 @@ namespace Identity.Controllers
     {
         private readonly UserManager<AppUser> _userManager;
 
-        public AccountController(UserManager<AppUser> userManager)
+        public SignInManager<AppUser> _signInManager { get; }
+
+        public AccountController(UserManager<AppUser> userManager, SignInManager<AppUser> signInManager)
         {
             _userManager = userManager;
+            _signInManager = signInManager;
         }
 
         [AllowAnonymous] //registre actionu AllowAnonymous yapınca kimliğini tanıntmamış kişilerde gelebilir. yetkilendirilmemiş kişilerde gelebilir ilk defa geliyor kayıt olmak için o yüzden izin ver. loginde çök ensesine 
