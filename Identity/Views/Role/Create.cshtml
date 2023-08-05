@@ -1,6 +1,4 @@
-﻿
-
-@model string
+﻿@model string
 
 
 <div class="row">
@@ -9,9 +7,11 @@
             <h3>Rol Oluşturma Paneli</h3>
         </div>
         <div class="card-body">
-            <label> Ad:</label>
-            <input type="text" class="form-control" name="name" />
-            <input type="submit" value="OLUŞTUR" class="btn btn-success" />
+            <form asp-action="Create" method="post">
+                <label> Ad:</label>
+                <input type="text" class="form-control" name="name" />
+                <input type="submit" value="OLUŞTUR" class="btn btn-success" />
+            </form>
         </div>
     </div>
 </div>

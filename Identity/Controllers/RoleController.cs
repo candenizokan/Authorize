@@ -27,5 +27,6 @@ namespace Identity.Controllers
             return View();
         }
 
+        public IActionResult List() => View(_roleManager.Roles);
     }
 }
