@@ -26,7 +26,8 @@ namespace Identity.Controllers
             {
                 //herşey yolundaysa artık veritabanıma kaydedebilirim
                 AppUser appUser = new AppUser() { Email = dto.Mail, UserName = dto.UserName };
-                IdentityResult result = await _userManager.CreateAsync(appUser, dto.Password);
+                IdentityResult result = await _userManager.CreateAsync(appUser, dto.Password); //UserManager içindeki CreateAsync veritabanıma kaydediyor. IdentityResult ise create oldu mu olmadı mı diye kontrol ediyor
+                if (result.Succeeded) return RedirectToAction("Login");
             }
             return View(dto);
         }
