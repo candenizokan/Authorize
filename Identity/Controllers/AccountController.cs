@@ -13,7 +13,11 @@ namespace Identity.Controllers
         [HttpPost]
         public IActionResult Register(RegisterDTO dto)
         {
-            return View();
+            if (ModelState.IsValid)// validasyonlarım tamam mı
+            {
+
+            }
+            return View(dto);
         }
     }
 }
