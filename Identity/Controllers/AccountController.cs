@@ -16,12 +16,14 @@ namespace Identity.Controllers
         {
             _userManager = userManager;
         }
+
+        [AllowAnonymous] //registre actionu AllowAnonymous yapınca kimliğini tanıntmamış kişilerde gelebilir. yetkilendirilmemiş kişilerde gelebilir ilk defa geliyor kayıt olmak için o yüzden izin ver. loginde çök ensesine 
         public IActionResult Register()
         {
             return View();
         }
 
-        [HttpPost]
+        [HttpPost,AllowAnonymous]
         public async Task<IActionResult> Register(RegisterDTO dto)
         {
             if (ModelState.IsValid)// validasyonlarım tamam mı
