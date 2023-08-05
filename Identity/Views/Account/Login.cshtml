@@ -18,6 +18,9 @@
                     <input asp-for="Password" class="form-control" type="password" />
                     <span asp-validation-for="Password" class="text-danger"></span>
                 </div>
+                <div>
+                    <input asp-for="ReturnUrl" type="hidden" />@*//ReturnUrl postta tekrar kullanabileyim diye ekliyorum. viewda gömüyorum id gibi düşün*@
+                </div>
                 <div class="form-group">
                    <input type="submit" class="btn btn-warning" value="GİRİŞ YAP" />
                 </div>
