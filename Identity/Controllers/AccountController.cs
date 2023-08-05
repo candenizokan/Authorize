@@ -44,7 +44,11 @@ namespace Identity.Controllers
         [HttpPost]
         public IActionResult Login(LoginDTO dto)
         {
-            return View();
+            if (ModelState.IsValid)
+            {
+
+            }
+            return View(dto);
         }
     }
 }
