@@ -1,11 +1,13 @@
 ﻿using Identity.Models;
 using Identity.Models.DTOs;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
 
 namespace Identity.Controllers
 {
+    [Authorize]//x bir kişinin buraya ulaşabilmesi için Authorize olması lazım.
     public class AccountController : Controller
     {
         private readonly UserManager<AppUser> _userManager;
