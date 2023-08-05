@@ -1,1 +1,28 @@
 ﻿@model IEnumerable<IdentityRole>
+
+
+<p>
+    <a asp-action="Create">Yeni Rol Ekle</a>
+</p>
+
+<div>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Assign</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+           {
+               <tr>
+                   <td>@item.Id</td>
+                   <td>@item.Name</td>
+                   <td><a asp-action="AssignUser" asp-route-id="@item.Id" class="btn btn-success">Kullanıcıya Rol Ata</a></td>
+               </tr>
+           }
+        </tbody>
+    </table>
+</div>
