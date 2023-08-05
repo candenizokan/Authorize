@@ -46,7 +46,8 @@ namespace Identity.Controllers
         {
             if (ModelState.IsValid)
             {
-
+                //içerdeki use kim bulmaya çalışıyorum
+                AppUser appUser =_userManager.FindByNameAsync(dto.UserName);
             }
             return View(dto);
         }
