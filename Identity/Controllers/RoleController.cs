@@ -31,8 +31,8 @@ namespace Identity.Controllers
 
 
         public IActionResult AssignUser(string id) 
-        { 
-
+        {
+            IdentityRole identityRole = _roleManager.FindByIdAsync(id);//yukarda id si olan rolü bulmak istiyorum
         }
     }
 }
