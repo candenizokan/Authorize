@@ -1,11 +1,16 @@
 ﻿using Identity.Models;
 using Identity.Models.DTOs;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Identity.Controllers
 {
     public class AccountController : Controller
     {
+        public AccountController(UserManager<AppUser> userManager)
+        {
+
+        }
         public IActionResult Register()
         {
             return View();
