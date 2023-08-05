@@ -35,5 +35,10 @@ namespace Identity.Controllers
             }
             return View(dto);
         }
+
+        public IActionResult Login()
+        {
+            return View();
+        }
     }
 }
