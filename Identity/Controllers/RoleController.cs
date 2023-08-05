@@ -51,7 +51,8 @@ namespace Identity.Controllers
                 list.Add(item);
             }
 
-            AssignVM
+            AssignVM vm= new AssignVM() { RoleName=identityRole.Name,HasNotRole=hasNotRole,HasRole=hasRole};
+            return View(vm);
             
         }
     }
