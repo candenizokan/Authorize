@@ -22,7 +22,7 @@ namespace Identity.Controllers
         {
             return View();
         }
-
+        //AllowAnonymous kimliği belirlenmemiş kişiler buraya gelebilir, Authorize kendini ezdirmez/etkilemez
         [HttpPost,AllowAnonymous]
         public async Task<IActionResult> Register(RegisterDTO dto)
         {
