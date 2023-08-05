@@ -1,1 +1,27 @@
 ﻿
+
+@model LoginDTO
+
+
+<div class="row">
+    <div class="card col-md-8 offset-2">
+        <div class="card-text"> LOG IN EKRANI</div>
+        <div class="card-body">
+            <form asp-action="Login" method="post">
+                <div class="form-group">
+                    <label asp-for="UserName" class="form-control"></label>
+                    <input asp-for="UserName" class="form-control" type="text" />
+                    <span asp-validation-for="UserName" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label asp-for="Password" class="form-control"></label>
+                    <input asp-for="Password" class="form-control" type="password" />
+                    <span asp-validation-for="Password" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                   <input type="submit" class="btn btn-warning" value="GİRİŞ YAP" />
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
