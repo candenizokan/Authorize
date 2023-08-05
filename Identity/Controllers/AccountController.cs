@@ -47,7 +47,11 @@ namespace Identity.Controllers
             if (ModelState.IsValid)
             {
                 //içerdeki use kim bulmaya çalışıyorum
-                AppUser appUser = await _userManager.FindByNameAsync(dto.UserName);
+                AppUser appUser = await _userManager.FindByNameAsync(dto.UserName); // kullanıcıyı bulması
+                if (appUser!=null)
+                {
+                    //şifre kotrolü yapmam lazım. bunu başka bir sınıf yapıyor. bu durumda bunu di ile almam lazım.
+                }
             }
             return View(dto);
         }
