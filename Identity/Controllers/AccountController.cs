@@ -40,5 +40,11 @@ namespace Identity.Controllers
         {
             return View( new LoginDTO() { ReturnUrl=returnUrl});
         }
+
+        [HttpPost]
+        public IActionResult Login(LoginDTO dto)
+        {
+            return View();
+        }
     }
 }
