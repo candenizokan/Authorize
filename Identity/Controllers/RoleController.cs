@@ -4,9 +4,7 @@ namespace Identity.Controllers
 {
     public class RoleController : Controller
     {
-        public IActionResult Index()
-        {
-            return View();
-        }
+        public IActionResult Create() => View(); //{ return yerine =>}
+       
     }
 }
