@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
+using System.Threading.Tasks;
 
 namespace Identity.Controllers
 {
@@ -15,15 +16,16 @@ namespace Identity.Controllers
         public IActionResult Create() => View(); //{ return yerine =>}
 
         [HttpPost]
-        public IActionResult Create([Required(ErrorMessage = "İsim Boş olamaz")][MinLength(3, ErrorMessage = "En az 3 karakter yazmalısınız")] string name)
+        public async Task<IActionResult> Create([Required(ErrorMessage = "İsim Boş olamaz")][MinLength(3, ErrorMessage = "En az 3 karakter yazmalısınız")] string name)
         {
             if (ModelState.IsValid)
             {
                 //db ye di ile enjeksiyonla gelen _roleManager ile kayıt yapacağım.
-                _roleManager.CreateAsync(new IdentityRole() { Name = name });// CreateAsync benden IdentityRole nesnesi istiyor. bende IdentityRole nesnesi oluşturup ekliyorum. burası benden bir result dönüyor. 
+                IdentityResult result = await _roleManager.CreateAsync(new IdentityRole() { Name = name });// CreateAsync benden IdentityRole nesnesi istiyor. bende IdentityRole nesnesi oluşturup ekliyorum. burası benden bir result dönüyor. 
+                if (result.Succeeded) return RedirectToAction("List");//başarılıysa db ye ekledim demektir liste götür diyorum
             }
             return View();
         }
-       
+
     }
 }
