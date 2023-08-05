@@ -28,5 +28,11 @@ namespace Identity.Controllers
         }
 
         public IActionResult List() => View(_roleManager.Roles);
+
+
+        public IActionResult AssignUser(string id) 
+        { 
+
+        }
     }
 }
