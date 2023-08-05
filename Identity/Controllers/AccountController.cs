@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Threading.Tasks;
+using SignInResult = Microsoft.AspNetCore.Identity.SignInResult;
 
 namespace Identity.Controllers
 {
@@ -51,9 +52,14 @@ namespace Identity.Controllers
             {
                 //içerdeki use kim bulmaya çalışıyorum
                 AppUser appUser = await _userManager.FindByNameAsync(dto.UserName); // kullanıcıyı bulması
-                if (appUser!=null)
+                if (appUser!=null)//kullanıcım var mı varsa içeri gir şifre doğru mu
                 {
                     //şifre kotrolü yapmam lazım. bunu başka bir sınıf yapıyor. bu durumda bunu di ile almam lazım.
+                    SignInResult result= await _signInManager.PasswordSignInAsync(dto.UserName,dto.Password,false,false);//başarılı mı başarısız mı
+                    if (result.Succeeded) //kullanıcı adı ve şifre doğru ise
+                    {
+                        return Redirect(dto.ReturnUrl ?? "/");//dto.ReturnUrl varsa oraya götür yoksa anasayfaya götür
+                    }
                 }
             }
             return View(dto);
