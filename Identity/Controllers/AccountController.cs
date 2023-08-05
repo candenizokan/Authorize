@@ -40,13 +40,14 @@ namespace Identity.Controllers
             return View(dto);
         }
 
+        [AllowAnonymous]//kişi kendini tanıtmadan gelebilir izin ver kendini tanıtsın
         public IActionResult Login(string returnUrl)
         {
             return View( new LoginDTO() { ReturnUrl=returnUrl});
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Login(LoginDTO dto)
+        [HttpPost, AllowAnonymous,ValidateAntiForgeryToken]//ValidateAntiForgeryToken gette söylemeye gerek yok. doğruladıysam kişiyi burada gerekli
+        public async Task<IActionResult> Login(LoginDTO dto)//kişiyi doğruladığım yer loginin postu
         {
             if (ModelState.IsValid)
             {
@@ -66,7 +67,7 @@ namespace Identity.Controllers
         }
 
 
-        public async Task<IActionResult> LogOut()
+        public async Task<IActionResult> LogOut()//kişi yetkilidir. burada [AllowAnonymous] demeye gerek yok. içerdeki kişi dışarı çıkmak istiyor
         {
             await _signInManager.SignOutAsync();
             return RedirectToAction("Index","Home");
