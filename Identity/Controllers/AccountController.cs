@@ -1,4 +1,5 @@
-﻿using Identity.Models.DTOs;
+﻿using Identity.Models;
+using Identity.Models.DTOs;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Identity.Controllers
@@ -15,7 +16,8 @@ namespace Identity.Controllers
         {
             if (ModelState.IsValid)// validasyonlarım tamam mı
             {
-
+                //herşey yolundaysa artık veritabanıma kaydedebilirim
+                AppUser appUser = new AppUser() { Email=dto.Mail, UserName=dto.UserName};
             }
             return View(dto);
         }
