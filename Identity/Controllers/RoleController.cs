@@ -1,5 +1,7 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Identity.Models;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Threading.Tasks;
 
@@ -8,10 +10,12 @@ namespace Identity.Controllers
     public class RoleController : Controller
     {
         private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public RoleController(RoleManager<IdentityRole> roleManager)
+        public RoleController(RoleManager<IdentityRole> roleManager,UserManager<AppUser> userManager)
         {
             _roleManager = roleManager;
+            _userManager = userManager;
         }
         public IActionResult Create() => View(); //{ return yerine =>}
 
@@ -30,9 +34,14 @@ namespace Identity.Controllers
         public IActionResult List() => View(_roleManager.Roles);
 
 
-        public IActionResult AssignUser(string id) 
+        public async Task<IActionResult> AssignUser(string id) 
         {
-            IdentityRole identityRole = _roleManager.FindByIdAsync(id);//yukarda id si olan rolü bulmak istiyorum
+            IdentityRole identityRole = await _roleManager.FindByIdAsync(id);//yukarda id si olan rolü bulmak istiyorum
+
+            //benim role sahip olanlarımın listesi
+            List<AppUser> hasRole = new List<AppUser>();
+
+            //sahip olduğum tüm kullanıcıları çağımam için usermanager sınıfına ihtiyacım var. bunu ctorda di ile alacağım
         }
     }
 }
