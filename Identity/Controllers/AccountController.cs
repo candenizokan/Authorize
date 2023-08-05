@@ -42,12 +42,12 @@ namespace Identity.Controllers
         }
 
         [HttpPost]
-        public IActionResult Login(LoginDTO dto)
+        public async Task<IActionResult> Login(LoginDTO dto)
         {
             if (ModelState.IsValid)
             {
                 //içerdeki use kim bulmaya çalışıyorum
-                AppUser appUser =_userManager.FindByNameAsync(dto.UserName);
+                AppUser appUser = await _userManager.FindByNameAsync(dto.UserName);
             }
             return View(dto);
         }
