@@ -1,10 +1,17 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.DataAnnotations;
 
 namespace Identity.Controllers
 {
     public class RoleController : Controller
     {
+        private readonly RoleManager<IdentityRole> roleManager;
+
+        public RoleController(RoleManager<IdentityRole> roleManager)
+        {
+            this.roleManager = roleManager;
+        }
         public IActionResult Create() => View(); //{ return yerine =>}
 
         [HttpPost]
