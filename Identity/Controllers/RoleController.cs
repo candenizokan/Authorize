@@ -1,4 +1,5 @@
 ﻿using Identity.Models;
+using Identity.Models.VMs;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using System.Collections.Generic;
@@ -40,8 +41,18 @@ namespace Identity.Controllers
 
             //benim role sahip olanlarımın listesi
             List<AppUser> hasRole = new List<AppUser>();
+            List<AppUser> hasNotRole = new List<AppUser>();
 
             //sahip olduğum tüm kullanıcıları çağımam için usermanager sınıfına ihtiyacım var. bunu ctorda di ile alacağım
+
+            foreach (var item in _userManager.Users)
+            {
+                var list = (await _userManager.IsInRoleAsync(item, identityRole.Name)) ? hasRole : hasNotRole;
+                list.Add(item);
+            }
+
+            AssignVM
+            
         }
     }
 }
