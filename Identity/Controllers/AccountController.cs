@@ -64,5 +64,12 @@ namespace Identity.Controllers
             }
             return View(dto);
         }
+
+
+        public IActionResult LogOut()
+        {
+            _signInManager.SignOutAsync();
+            return RedirectToAction("Index","Home");
+        }
     }
 }
