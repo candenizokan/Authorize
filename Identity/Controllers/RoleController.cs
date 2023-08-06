@@ -64,6 +64,7 @@ namespace Identity.Controllers
             foreach (var item in vm.AddIds ?? new string[] {})//null gelirse eleman sayısı 0 olan string bir array yolla. null gelirse hataya sebep olur diye yaptık
             {
                 AppUser appUser = await _userManager.FindByIdAsync(item);
+                result = _userManager.AddToRoleAsync(appUser, vm.RoleName);
             }
         }
     }
