@@ -63,9 +63,16 @@ namespace Identity.Controllers
 
             foreach (var item in vm.AddIds ?? new string[] {})//null gelirse eleman sayısı 0 olan string bir array yolla. null gelirse hataya sebep olur diye yaptık
             {
-                AppUser appUser = await _userManager.FindByIdAsync(item);
-                result = await _userManager.AddToRoleAsync(appUser, vm.RoleName);
+                AppUser appUser = await _userManager.FindByIdAsync(item);//eklenecek kişiyi buldum
+                result = await _userManager.AddToRoleAsync(appUser, vm.RoleName);//vm nesnesinden gelen rolü ekle yaptım
             }
+
+            foreach (var item in vm.DeleteIds ?? new string[] { })// silinecek kişileri dönüyorumnull gelirse eleman sayısı 0 olan string bir array yolla. null gelirse hataya sebep olur diye yaptık
+            {
+                AppUser appUser = await _userManager.FindByIdAsync(item);//silinecek kişiyi buldum
+                result = await _userManager.RemoveFromRoleAsync(appUser, vm.RoleName);//vm nesnesinden gelen rolü sil yaptım
+            }
+            return RedirectToAction("List");
         }
     }
 }
