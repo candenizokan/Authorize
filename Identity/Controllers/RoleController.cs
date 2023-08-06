@@ -55,5 +55,16 @@ namespace Identity.Controllers
             return View(vm);
             
         }
+
+        [HttpPost]
+        public IActionResult AssignUser(AssignVM vm)
+        {
+            IdentityResult result;
+
+            foreach (var item in vm.AddIds ?? new string[] {})//null gelirse eleman sayısı 0 olan string bir array yolla. null gelirse hataya sebep olur diye yaptık
+            {
+
+            }
+        }
     }
 }
