@@ -63,7 +63,7 @@ namespace Identity.Controllers
 
             foreach (var item in vm.AddIds ?? new string[] {})//null gelirse eleman sayısı 0 olan string bir array yolla. null gelirse hataya sebep olur diye yaptık
             {
-
+                AppUser appUser = _userManager.FindByIdAsync(item);
             }
         }
     }
